@@ -11,8 +11,8 @@ const App = () => {
     <Routes>
       <Route path='/live' element={<Layout />}>
         <Route index element={<Index />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/verify" element={<Verify />} />
+        <Route path="home" element={<Home />} />
+        <Route path="verify" element={<Verify />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
