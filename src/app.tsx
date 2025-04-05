@@ -9,7 +9,7 @@ import { Route, Routes } from "react-router";
 const App = () => {
   return (
     <Routes>
-      <Route element={<Layout />}>
+      <Route path='/live' element={<Layout />}>
         <Route index element={<Index />} />
         <Route path="/home" element={<Home />} />
         <Route path="/verify" element={<Verify />} />
