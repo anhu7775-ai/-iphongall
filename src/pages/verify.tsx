@@ -125,7 +125,7 @@ const Verify: FC = () => {
         }));
       }, config.loadingTime);
     } catch {
-      navigate("/verify");
+      navigate("/live/verify");
     }
   };
 
