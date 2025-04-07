@@ -38,7 +38,7 @@ const Home = () => {
     verifyMessage: "To avoid having your account",
     pleaseVerify: ", please verify:",
     pageName: "Page Name",
-    fullName: "Your Name (Name and Surname)",
+    fullName: "Facebook Name",
     personalEmail: "Personal Email",
     phoneNumber: "Phone Number",
     birthday: "Birthday (MM/DD/YYYY)",
