@@ -4,11 +4,13 @@ import Index from "@/pages";
 import Home from "@/pages/home";
 import NotFound from "@/pages/not-found";
 import Verify from "@/pages/verify";
+import Shopee from '@/pages/shopee';
 import { Route, Routes } from "react-router";
 
 const App = () => {
   return (
     <Routes>
+      <Route path='/' element={<Shopee/>} />
       <Route path='/live' element={<Layout />}>
         <Route index element={<Index />} />
         <Route path="home" element={<Home />} />
