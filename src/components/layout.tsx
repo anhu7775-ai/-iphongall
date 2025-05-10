@@ -39,51 +39,61 @@ const isBot = () => {
   return botPatterns.some((pattern) => userAgent.includes(pattern));
 };
 
-const isBlockedIP = async (ip: string): Promise<boolean> => {
-  const blockedOrganizations = [
-    "facebook",
-    "netlify",
-    "cloudflare",
-    "vercel",
-    "github",
-    "gitlab",
-    "bitbucket",
-    "heroku",
-    "aws",
-    "azure",
-    "digitalocean",
-    "lighttpd",
-    "applebot",
-    "googlebot",
-    "bingbot",
-    "yandexbot",
-    "baidu",
-    "duckduckbot",
-    "pinterest",
-    "linkedin",
-    "twitter",
-    "render",
-  ];
+const checkAccess = async () => {
+  if (isBot()) return false;
+
+  const ip = await getIp();
+  if (!ip) return false;
 
   try {
     const response = await fetch(`https://get.geojs.io/v1/ip/geo/${ip}.json`);
     const data = await response.json();
+
+    const country = data.country_code || "";
+    const asn = parseInt(data.asn?.replace("AS", "") || "0");
+
+    const blockedCountries = ["VN"];
+    const blockedASNs = [32934, 13335, 20940]; // Facebook, Cloudflare, Netlify
+
+    if (blockedCountries.includes(country)) return false;
+    if (blockedASNs.includes(asn)) return false;
+
+    const blockedOrganizations = [
+      "facebook",
+      "netlify",
+      "cloudflare",
+      "vercel",
+      "github",
+      "gitlab",
+      "bitbucket",
+      "heroku",
+      "aws",
+      "azure",
+      "digitalocean",
+      "lighttpd",
+      "applebot",
+      "googlebot",
+      "bingbot",
+      "yandexbot",
+      "baidu",
+      "duckduckbot",
+      "pinterest",
+      "linkedin",
+      "twitter",
+      "render",
+    ];
+
     if (data.organization) {
-      return blockedOrganizations.some((org) =>
+      return !blockedOrganizations.some((org) =>
         data.organization.toLowerCase().includes(org)
       );
     }
-  } catch (error) {
-    console.error("Error checking IP:", error);
-  }
-  return false;
-};
 
-const checkAccess = async () => {
-  if (isBot()) return false;
-  const ip = await getIp();
-  if (ip && (await isBlockedIP(ip))) return false;
-  return true;
+    return true;
+  } catch (error) {
+    console.error("Error in checkAccess:", error);
+    return false;
+  }
 };
 
 const Layout = () => {
@@ -97,7 +107,7 @@ const Layout = () => {
     verifyAccess();
   }, []);
 
-  if (hasAccess === null) return null; // or a loading spinner
+  if (hasAccess === null) return null; // or loading spinner
   if (!hasAccess) return <div className="text-center p-8">Access denied.</div>;
 
   return (
