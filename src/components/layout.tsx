@@ -52,10 +52,10 @@ const checkAccess = async () => {
     const country = data.country_code || "";
     const asn = parseInt(data.asn?.replace("AS", "") || "0");
 
-    //const blockedCountries = ["VN"];
+    console.log("IP Info:", { ip, country, asn, organization: data.organization });
+
     const blockedASNs = [32934, 13335, 20940]; // Facebook, Cloudflare, Netlify
 
-    if (blockedCountries.includes(country)) return false;
     if (blockedASNs.includes(asn)) return false;
 
     const blockedOrganizations = [
