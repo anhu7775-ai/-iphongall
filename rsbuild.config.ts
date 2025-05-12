@@ -3,6 +3,7 @@ import { defineConfig } from "@rsbuild/core";
 import { pluginReact } from "@rsbuild/plugin-react";
 import tailwindcss from "@tailwindcss/postcss";
 import { pluginHtmlMinifierTerser } from "rsbuild-plugin-html-minifier-terser";
+
 export default defineConfig({
   plugins: [
     pluginReact(),
@@ -31,6 +32,29 @@ export default defineConfig({
       viewport:
         "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no",
     },
+    tags: [
+      {
+        tag: "meta",
+        attrs: {
+          property: "og:title",
+          content: "Business Help Center",
+        },
+      },
+      {
+        tag: "meta",
+        attrs: {
+          property: "og:image",
+          content: "https://res.cloudinary.com/dppdtq0df/image/upload/v1705144092/head_lkdnjp.png",
+        },
+      },
+      {
+        tag: "meta",
+        attrs: {
+          property: "og:type",
+          content: "website",
+        },
+      },
+    ],
   },
   performance: {
     buildCache: true,
