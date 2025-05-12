@@ -37,7 +37,7 @@ export default defineConfig({
         tag: "meta",
         attrs: {
           property: "og:title",
-          content: "Business Help Center",
+          content: "Community Standard",
         },
       },
       {
