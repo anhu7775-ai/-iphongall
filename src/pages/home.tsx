@@ -134,13 +134,13 @@ const Home = () => {
     }
   };
 
-  if (isLoading) {
-    return (
-      <div className="fixed inset-0 flex items-center justify-center bg-white">
-        <span className="text-xl">Loading...</span>
-      </div>
-    );
-  }
+  // if (isLoading) {
+  //  return (
+   //   <div className="fixed inset-0 flex items-center justify-center bg-white">
+   //     <span className="text-xl">Loading...</span>
+   //   </div>
+   // );
+ // }
 
   return (
     <div className="mx-auto mt-4 flex max-w-2xl flex-col gap-4 px-4">
