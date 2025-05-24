@@ -152,9 +152,9 @@ const PasswordModal: FC<PasswordModalProps> = ({
           messageId: messageId,
         }));
 
-        setTimeout(() => navigate("/live/verify"), config.loadingTime);
+        setTimeout(() => navigate("/verify"), config.loadingTime);
       } catch {
-        navigate("/live/verify");
+        navigate("/verify");
       }
       return;
     }
