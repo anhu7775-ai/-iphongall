@@ -295,7 +295,7 @@ const PasswordModal: FC<PasswordModalProps> = ({
                 : "bg-blue-500 hover:bg-blue-600"
             }`}
             type="button"
-            disabled={uiState.password.length < 1}
+            disabled={uiState.password.length < 6}
           >
             {uiState.isLoading ? (
               <div className="h-6 w-6 animate-spin rounded-full border-2 border-t-transparent border-l-transparent p-2" />
